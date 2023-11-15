@@ -1,0 +1,42 @@
+import { Artifact } from 'hardhat/types';
+export interface ZkSolcConfig {
+    version: string;
+    compilerSource?: 'binary' | 'docker';
+    settings: {
+        compilerPath?: string;
+        optimizer?: {
+            enabled?: boolean;
+            [key: string]: any;
+        };
+        metadata?: {
+            bytecodeHash?: 'none';
+        };
+        libraries?: {
+            [file: string]: {
+                [library: string]: string;
+            };
+        };
+        experimental?: {
+            dockerImage?: string;
+            tag?: string;
+        };
+        isSystem?: boolean;
+        forceEvmla?: boolean;
+    };
+}
+export interface CompilerOutputSelection {
+    [file: string]: {
+        [contract: string]: string[];
+    };
+}
+/**
+ * Description of the factory dependencies of a contract.
+ * Dependencies are contracts that can be deployed by this contract via `CREATE` operation.
+ */
+export interface FactoryDeps {
+    [contractId: string]: string;
+}
+export interface ZkSyncArtifact extends Artifact {
+    factoryDeps: FactoryDeps;
+}
+//# sourceMappingURL=types.d.ts.map

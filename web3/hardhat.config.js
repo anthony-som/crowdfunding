@@ -34,7 +34,7 @@ module.exports = {
   solidity: {
     version: "0.8.17",
     defaultNetwork: "goerli",
-    networks: {
+    network: {
       hardhat: {},
       goerli: {
         url: "https://rpc.ankr.com/eth_goerli",

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import { useStateContext } from "../context";
 import { CustomButton } from "./";
 import { logo, menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
-import { useStateContext } from "../context";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Navbar = () => {
           placeholder="Search for campaigns"
           className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
         />
+
         <div className="w-[72px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer">
           <img
             src={search}
@@ -34,9 +36,8 @@ const Navbar = () => {
           title={address ? "Create a campaign" : "Connect"}
           styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
           handleClick={() => {
-            if (address) {
-              navigate("create-campaign");
-            } else connect();
+            if (address) navigate("create-campaign");
+            else connect();
           }}
         />
 
@@ -50,7 +51,8 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
-      {/* Small Screen Navigatoin */}
+
+      {/* Small screen navigation */}
       <div className="sm:hidden flex justify-between items-center relative">
         <div className="w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer">
           <img
@@ -59,6 +61,7 @@ const Navbar = () => {
             className="w-[60%] h-[60%] object-contain"
           />
         </div>
+
         <img
           src={menu}
           alt="menu"
@@ -108,9 +111,8 @@ const Navbar = () => {
               title={address ? "Create a campaign" : "Connect"}
               styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
               handleClick={() => {
-                if (address) {
-                  navigate("create-campaign");
-                } else connect();
+                if (address) navigate("create-campaign");
+                else connect();
               }}
             />
           </div>

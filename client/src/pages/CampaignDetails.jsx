@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
-
 import { useStateContext } from "../context";
 import { CountBox, CustomButton, Loader } from "../components";
 import { calculateBarPercentage, daysLeft } from "../utils";
@@ -10,8 +9,10 @@ import { thirdweb } from "../assets";
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { donate, getDonations, contract, address } = useStateContext();
+  const { donate, getDonations, contract, address, getUserCampaignsCount } =
+    useStateContext();
 
+  const [userCampaignsCount, setUserCampaignsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [donators, setDonators] = useState([]);
@@ -36,6 +37,15 @@ const CampaignDetails = () => {
     navigate("/");
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    const fetchUserCampaignsCount = async () => {
+      const count = await getUserCampaignsCount();
+      setUserCampaignsCount(count);
+    };
+
+    fetchUserCampaignsCount();
+  }, []);
 
   return (
     <div>
@@ -92,7 +102,7 @@ const CampaignDetails = () => {
                   {state.owner}
                 </h4>
                 <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">
-                  10 Campaigns
+                  {userCampaignsCount} Campaigns
                 </p>
               </div>
             </div>

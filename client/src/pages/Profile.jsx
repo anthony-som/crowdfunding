@@ -14,6 +14,7 @@ const Profile = () => {
     setCampaigns(data);
     setIsLoading(false);
   };
+
   useEffect(() => {
     if (contract) fetchCampaigns();
   }, [address, contract]);

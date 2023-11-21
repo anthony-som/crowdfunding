@@ -109,7 +109,7 @@ const CampaignDetails = () => {
               </p>
             </div>
           </div>
-          {/* Donators */}
+
           <div>
             <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
               Donators

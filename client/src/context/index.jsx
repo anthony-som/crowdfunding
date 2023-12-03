@@ -108,9 +108,6 @@ export const StateContextProvider = ({ children }) => {
         createCampaign: publishCampaign,
         getCampaigns,
         getUserCampaigns,
-        donate,
-        getDonations,
-        getUserCampaignsCount,
       }}
     >
       {children}

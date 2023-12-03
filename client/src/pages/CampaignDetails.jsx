@@ -193,3 +193,5 @@ const CampaignDetails = () => {
     </div>
   );
 };
+
+export default CampaignDetails;

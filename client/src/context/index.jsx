@@ -6,31 +6,31 @@ import {
   useMetamask,
   useContractWrite,
 } from "@thirdweb-dev/react";
+
 import { ethers } from "ethers";
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
-    "0x25B24DbB3d59f1F529f44F6404b184b392145947"
+    "0x94C889a459504B7Be4E0460DDaa96A56c2b334E3"
   );
-  const { mutateAsync: createCampaign, isLoading } = useContractWrite(
+  const { mutateAsync: createCampaign } = useContractWrite(
     contract,
     "createCampaign"
   );
 
   const address = useAddress();
   const connect = useMetamask();
-
   const publishCampaign = async (form) => {
     try {
       const data = await createCampaign({
         args: [
-          address, // owner
-          form.title, // title
-          form.description, // description
+          address,
+          form.title,
+          form.description,
           form.target,
-          new Date(form.deadline).getTime(), // deadline,
+          new Date(form.deadline).getTime(),
           form.image,
         ],
       });
@@ -66,6 +66,7 @@ export const StateContextProvider = ({ children }) => {
     const filteredCampaigns = allCampaigns.filter(
       (campaign) => campaign.owner === address
     );
+
     return filteredCampaigns;
   };
 
@@ -102,6 +103,8 @@ export const StateContextProvider = ({ children }) => {
         createCampaign: publishCampaign,
         getCampaigns,
         getUserCampaigns,
+        donate,
+        getDonations,
       }}
     >
       {children}

@@ -1,3 +1,14 @@
-# crowdfunding
+Anthony Som
+Contact me here at github.com/anthony-som
 
-Web3 Blockchain Crowdfunding Application on the Sepolia Blockchain
+To run this program navigate to the client directory and
+
+```bash
+npm install
+```
+
+and then
+
+```bash
+npm run dev
+```

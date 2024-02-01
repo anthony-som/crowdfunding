@@ -92,9 +92,7 @@ const CampaignDetails = () => {
                   {state.owner}
                 </h4>
                 <p className="mt-[4px] font-epilogue font-normal text-[12px] text-[#808191]">
-                  {userCampaignsCount > 1
-                    ? `${userCampaignsCount} Campaigns`
-                    : `${userCampaignsCount} Campaign`}
+                  10 Campaigns
                 </p>
               </div>
             </div>
@@ -111,7 +109,7 @@ const CampaignDetails = () => {
               </p>
             </div>
           </div>
-          {/* Donators */}
+
           <div>
             <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
               Donators
